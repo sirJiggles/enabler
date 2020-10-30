@@ -1,19 +1,4 @@
-import { WebClient } from '@slack/web-api'
-import * as dotenv from 'dotenv'
-import config from './src/config'
+import program from './src/program'
 
-dotenv.config()
-
-const token = process.env.BOT_TOKEN
-
-const web = new WebClient(token)
-
-;(async () => {
-  const res = await web.chat.postMessage({
-    channel: config.channel,
-    text: 'Hello there',
-  })
-
-  // `res` contains information about the posted message
-  console.log('Message sent: ', res.ts)
-})()
+// just run the program from the root file
+program()
