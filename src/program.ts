@@ -1,6 +1,7 @@
-// import { WebClient } from '@slack/web-api'
+import { WebClient } from '@slack/web-api'
 import * as dotenv from 'dotenv'
-import resource from './jira/resource'
+import blocked from './jira/blocked'
+import config from './config'
 
 const program = async () => {
   // get the env vars
@@ -11,23 +12,30 @@ const program = async () => {
     console.error('Got an unhandled error', error)
   })
 
-  // just test getting something from JIRA
-  // const response = await resource('issue/createmeta')
-  const blockedTickets = await resource('status = Blocked')
+  const blockedTickets = await blocked()
 
-  console.log(blockedTickets)
+  // lets build a sample message
+  let message = ''
+  blockedTickets.forEach((ticket) => {
+    const user = config.users.filter(
+      (user) => user.jiraEmail === ticket.assignee,
+    )[0]
+    if (!user) {
+      console.error('could not find the slack handle for ', ticket.assignee)
+      return
+    }
+    message += `Ticket ${ticket.id} is blocked @${user.slackHandle}, is alles gucci?\n`
+  })
 
-  // const token = process.env.BOT_TOKEN
+  const web = new WebClient(process.env.BOT_TOKEN)
 
-  // const web = new WebClient(token)
-
-  // const res = await web.chat.postMessage({
-  //   channel: config.channel,
-  //   text: 'Hello there',
-  // })
+  const res = await web.chat.postMessage({
+    channel: config.channel,
+    text: message,
+  })
 
   // // `res` contains information about the posted message
-  // console.log('Message sent: ', res.ts)
+  console.log('Message sent: ', res.ts)
 }
 
 export default program

@@ -1,5 +1,16 @@
 // config is just an object for things like team member
 const config = {
+  // how we notify users about their tickets
+  users: [
+    {
+      jiraEmail: 'gareth126@gmail.com',
+      slackHandle: 'gareth126',
+    },
+    {
+      jiraEmail: 'gareth.fuller@qualifyze.com',
+      slackHandle: 'gareth',
+    },
+  ],
   // what channel would you like the bot to talk in?
   // this is the channel ID you can get it from going to slack
   // in the web browser and checking the URL when in the channel
