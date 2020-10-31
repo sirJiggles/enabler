@@ -45,6 +45,6 @@ To use, add secrets into a `.env` file at the root of the project for:
 
 ## Modifying ✏️
 
-This is an open source repo so go nuts and folk it, have a look in `src/program.ts` for the main entry point of the program. There are some intentional abstractions that should hopefully reduce the chance of needing to modify much more:
+This is an open source repo so go nuts 🎉, have a look in `src/program.ts` for the main entry point of the program. There are some intentional abstractions that should hopefully reduce the chance of needing to modify much more:
 
 <img width="858" alt="Screenshot 2020-10-31 at 23 26 08" src="https://user-images.githubusercontent.com/1426390/97791253-ae848500-1bd0-11eb-96c3-d5914d5dc70c.png">
