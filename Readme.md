@@ -5,7 +5,7 @@ A slack bot that you can just run once to notify you if, from members of your te
 From JIRA:
 
 - A ticket has been blocked for too long ✅
-- Someone has no tickets in progress
+- Someone has no tickets in progress ✅
 - A ticket is in progress for a long time ✅
 - Someone is not working on an item from the top of the backlog
 

@@ -1,9 +1,12 @@
 import resource from './resource'
 import format from './format'
 import config from '../config'
-import { ITooLongState } from './types'
+import { IJiraQueryStates } from './types'
 
-const stateForTooLong = async (state: ITooLongState, messagePrefix: string) => {
+const stateForTooLong = async (
+  state: IJiraQueryStates,
+  messagePrefix: string,
+) => {
   const { timeLimit, statusName } = config.jira[state]
   // get the tickets in the state for too long
   const tickets = format(

@@ -7,10 +7,12 @@ const config = {
   users: [
     {
       jiraEmail: 'gareth126@gmail.com',
+      jiraId: '557058:37ea015e-5320-4a45-a7fc-f731050aa73f',
       slackHandle: 'gareth126',
     },
     {
       jiraEmail: 'gareth.fuller@qualifyze.com',
+      jiraId: '5eeb5567a228c50ab94507e9',
       slackHandle: 'gareth',
     },
   ],

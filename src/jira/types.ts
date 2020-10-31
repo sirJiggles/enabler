@@ -1,1 +1,1 @@
-export type ITooLongState = 'blocked' | 'inProgress'
+export type IJiraQueryStates = 'blocked' | 'inProgress'
