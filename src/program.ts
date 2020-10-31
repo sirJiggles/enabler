@@ -1,7 +1,6 @@
-import { WebClient } from '@slack/web-api'
 import * as dotenv from 'dotenv'
-import blocked from './jira/blocked'
-import config from './config'
+import stateForTooLong from './jira/stateForTooLong'
+import sendMessage from './slack/sendMessage'
 
 const program = async () => {
   // get the env vars
@@ -12,30 +11,12 @@ const program = async () => {
     console.error('Got an unhandled error', error)
   })
 
-  const blockedTickets = await blocked()
-
-  // lets build a sample message
+  // build up the message to send to the bot
   let message = ''
-  blockedTickets.forEach((ticket) => {
-    const user = config.users.filter(
-      (user) => user.jiraEmail === ticket.assignee,
-    )[0]
-    if (!user) {
-      console.error('could not find the slack handle for ', ticket.assignee)
-      return
-    }
-    message += `Ticket ${ticket.id} is blocked @${user.slackHandle}, is alles gucci?\n`
-  })
+  message += await stateForTooLong('blocked', '✋')
+  message += await stateForTooLong('inProgress', '⚙️')
 
-  const web = new WebClient(process.env.BOT_TOKEN)
-
-  const res = await web.chat.postMessage({
-    channel: config.channel,
-    text: message,
-  })
-
-  // // `res` contains information about the posted message
-  console.log('Message sent: ', res.ts)
+  await sendMessage(message)
 }
 
 export default program

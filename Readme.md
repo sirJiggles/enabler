@@ -4,9 +4,9 @@ A slack bot that you can just run once to notify you if, from members of your te
 
 From JIRA:
 
-- A ticket has been blocked for too long
+- A ticket has been blocked for too long ✅
 - Someone has no tickets in progress
-- A ticket is in progress for a long time
+- A ticket is in progress for a long time ✅
 - Someone is not working on an item from the top of the backlog
 
 From GIT:
@@ -26,7 +26,10 @@ You can configure how thresholds for the notification, team members and so on
 in the public config object that can be committed to git. This will adjust
 how the bot behaves. For API token configuration have a look at "secrets"
 
-As the project is in TypeScript and there is a type config for the configuration it should be fairly self explanatory 🚀
+As the project is in TypeScript and there is a type config for the configuration it should be fairly self explanatory 🚀 but some cool settings you can change
+
+- number of days a ticket is in state blocked before slacking about it
+- number of days a ticket is in state in progress before slacking about it.
 
 ## Secrets 🕵️‍♀️
 

@@ -1,4 +1,7 @@
-// config is just an object for things like team member
+// configure the application to work with your:
+// - teams
+// - github
+// - jira
 const config = {
   // how we notify users about their tickets
   users: [
@@ -25,6 +28,21 @@ const config = {
     apiUserEmail: 'gareth126@gmail.com',
     // the JIRA project you want to search for issues in
     project: '4ooling',
+    blocked: {
+      // how long can a ticket be in the blocked state before
+      // a slack notification is sent in days
+      timeLimit: 1,
+      // what you call the blocked state in JIRA, needs to be used in jql
+      statusName: 'Blocked',
+    },
+    inProgress: {
+      // how long can a ticket be in the in progress state before
+      // a slack notification is sent in days
+      timeLimit: 1,
+      // what you call the in progress state in JIRA, needs to be used
+      //in jql
+      statusName: 'In Progress',
+    },
   },
 }
 
