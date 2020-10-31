@@ -1,5 +1,3 @@
-//
-
 import resource from './resource'
 import format from './format'
 import config from '../config'
@@ -25,7 +23,7 @@ const usersWithNothingInState = async (
   const { users } = config
   const assigneesWithTickets = tickets.map((ticket) => ticket.assignee)
   users.forEach((user) => {
-    if (!assigneesWithTickets.includes(user.jiraEmail)) {
+    if (!assigneesWithTickets.includes(user.jiraAccountId)) {
       message += `${messagePrefix} @${user.slackHandle}, you have no tickets in the state ${state}\n`
     }
   })

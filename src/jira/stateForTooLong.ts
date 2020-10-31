@@ -11,7 +11,7 @@ const stateForTooLong = async (
   // get the tickets in the state for too long
   const tickets = format(
     await resource(
-      `status changed to "${statusName}" and not status changed after -${timeLimit}d`,
+      `status = "${statusName}" and not status changed after -${timeLimit}d`,
     ),
   )
 
@@ -22,7 +22,7 @@ const stateForTooLong = async (
   let message = ''
   tickets.forEach((ticket) => {
     const user = config.users.filter(
-      (user) => user.jiraEmail === ticket.assignee,
+      (user) => user.jiraAccountId === ticket.assignee,
     )[0]
     if (!user) {
       console.error('could not find the slack handle for ', ticket.assignee)

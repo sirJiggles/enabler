@@ -7,7 +7,7 @@ From JIRA:
 - A ticket has been blocked for too long ✅
 - Someone has no tickets in progress ✅
 - A ticket is in progress for a long time ✅
-- Someone is not working on an item from the top of the backlog
+- Someone is working on an issue that is lower in priority than an unassigned higher priority issue
 
 From GIT:
 
@@ -30,6 +30,8 @@ As the project is in TypeScript and there is a type config for the configuration
 
 - number of days a ticket is in state blocked before slacking about it
 - number of days a ticket is in state in progress before slacking about it.
+- the names of the states as you may have called them something custom
+- team members, you need to supply details from jira, slack and git in there so we can work out who to mention etc
 
 ## Secrets 🕵️‍♀️
 

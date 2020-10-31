@@ -6,6 +6,7 @@ declare namespace jira {
     '32x32': string
   }
   export interface IUser {
+    accountId: string
     self?: string
     name: string
     key?: string
@@ -150,7 +151,7 @@ declare namespace jira {
       fixVersions: any[]
       customfield_11200: string
       resolution: any
-      assignee: IUser
+      assignee?: IUser
       status: IIssueStatus
       components: any[]
       aggregatetimeestimate: any

@@ -1,5 +1,6 @@
 import * as dotenv from 'dotenv'
 import stateForTooLong from './jira/stateForTooLong'
+import topPriorityInProgress from './jira/topPriorityInProgress'
 import usersWithNothingInState from './jira/usersWithNothingInState'
 import sendMessage from './slack/sendMessage'
 
@@ -17,6 +18,7 @@ const program = async () => {
   message += await stateForTooLong('blocked', '✋')
   message += await stateForTooLong('inProgress', '⚙️')
   message += await usersWithNothingInState('inProgress', '🚨')
+  message += await topPriorityInProgress('↕️')
 
   // if there is something to send, send it in slack
   if (message !== '') {

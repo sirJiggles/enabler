@@ -6,20 +6,20 @@ const config = {
   // how we notify users about their tickets
   users: [
     {
-      jiraEmail: 'gareth126@gmail.com',
-      jiraId: '557058:37ea015e-5320-4a45-a7fc-f731050aa73f',
+      jiraAccountId: '557058:37ea015e-5320-4a45-a7fc-f731050aa73f',
       slackHandle: 'gareth126',
     },
     {
-      jiraEmail: 'gareth.fuller@qualifyze.com',
-      jiraId: '5eeb5567a228c50ab94507e9',
+      jiraAccountId: '5eeb5567a228c50ab94507e9',
       slackHandle: 'gareth',
     },
   ],
+
   // what channel would you like the bot to talk in?
   // this is the channel ID you can get it from going to slack
   // in the web browser and checking the URL when in the channel
   channel: 'C01DLHY6FM3',
+
   // JIRA configuration
   jira: {
     // this is the domain of your account so if your url is awesome.atlassian.net
@@ -45,6 +45,15 @@ const config = {
       //in jql
       statusName: 'In Progress',
     },
+    // to work out if people are working on the highest priority
+    // issues we need to know the priority names and the order of
+    // them for you in JIRA, the order is IMPORTANT here
+    // set them from highest to lowest, highest at 0 index
+    priorities: ['Highest', 'High', 'Medium', 'Low', 'Lowest'],
+    // to work out if people are working on highest priority issues
+    // we need to know the states where the work is 'done' and should
+    // not be compared
+    doneStates: ['Done', 'Closed', 'Resolved'],
   },
 }
 
