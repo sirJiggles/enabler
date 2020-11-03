@@ -10,7 +10,7 @@
     "build": "tsc -p .",
     "start": "yarn build && yarn execute",
     "execute": "node dist/index.js",
-    "lint": "eslint '**/*.{js,ts}' --fix"
+    "lint": "eslint '**/*.{js,ts}' --fix --debug"
   },
   "dependencies": {
     "@slack/web-api": "^5.13.0",

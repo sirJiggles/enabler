@@ -1,5 +1,5 @@
 {
-  "name": "@jigglytech/enabler-infrastructure",
+  "name": "@jigglytech/infrastructure",
   "version": "1.0.0",
   "description": "how the bot is deployed",
   "main": "dist/index.js",

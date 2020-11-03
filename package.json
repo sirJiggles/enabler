@@ -1,12 +1,21 @@
 {
-  "name": "enabler",
+  "name": "jigglytech",
   "author": "Gareth Fuller",
   "license": "Apache-2.0",
   "description": "a 'simple' slack bot",
-  "private": false,
+  "private": true,
   "scripts": {
     "lint": "lerna run lint --parallel",
     "bot": "cd packages/bot && yarn start"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/@types/**",
+      "**/@pulumi/**"
+    ]
   },
   "devDependencies": {
     "lerna": "^3.22.1"
