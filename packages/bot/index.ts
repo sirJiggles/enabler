@@ -1,4 +1,11 @@
 import program from './src/program'
 
-// just run the program from the root file
-program()
+const handler = async () => {
+  return program()
+}
+
+// this is so we can run it as a lambda
+exports.handler = handler
+
+// for when running locally
+export default program()

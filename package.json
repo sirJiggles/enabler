@@ -8,15 +8,6 @@
     "lint": "lerna run lint --parallel",
     "bot": "cd packages/bot && yarn start"
   },
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ],
-    "nohoist": [
-      "**/@types/**",
-      "**/@pulumi/**"
-    ]
-  },
   "devDependencies": {
     "lerna": "^3.22.1"
   }
