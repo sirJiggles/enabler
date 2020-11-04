@@ -1,6 +1,4 @@
-const program = () => {
-  const t = 'something'
-  console.log('this is the program!')
-}
+import program from './src/program'
 
+// just run the program from the root file
 export default program()
