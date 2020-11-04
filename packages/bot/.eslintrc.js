@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ['@jigglytech/enabler-eslint'],
+  extends: ['@enabler/eslint-config'],
 }

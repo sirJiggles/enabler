@@ -1,5 +1,5 @@
 {
-  "name": "@jigglytech/enabler-eslint",
+  "name": "@enabler/eslint-config",
   "version": "1.0.0",
   "description": "Eslint rules for the monorepo",
   "main": "index.js",
