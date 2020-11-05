@@ -1,4 +1,5 @@
 import * as dotenv from 'dotenv'
+import api from './api'
 import botLambda from './lambda'
 
 const program = () => {
@@ -9,8 +10,14 @@ const program = () => {
   const lambda = botLambda()
 
   // then make the API gateway end point to host it
+  const gatewayEndPoint = api({
+    name: 'enabler-bot',
+    eventHandler: lambda,
+    stageName: 'enabler',
+  })
 
-  return lambda.name
+  // what we can hit to run our little bot lambda
+  return gatewayEndPoint.url
 }
 
 export default program
