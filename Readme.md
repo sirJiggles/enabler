@@ -45,6 +45,10 @@ To use, add secrets into a `.env` file at the bot package and in the infrastruct
 - BOT_TOKEN, this is the token for the slack bot you create
 - [JIRA_TOKEN](https://confluence.atlassian.com/cloud/api-tokens-938839638.html) token from jira for basic rest auth
 
+## Deployments
+
+Take a look at the details in the infrastructure package about how to deploy it. But take note you need to run `yarn package` in the bot package to get the dist folder ready to go up to aws. As it need compiled ts, and prod node modules along with it.
+
 ## TODO 📝
 
 - make a home page for the app as per [here](https://api.slack.com/surfaces/tabs/using) to get the config input so it is not just in code
