@@ -1,4 +1,4 @@
-import config from '../config'
+import config from '../config/index'
 import format from './format'
 import userMentionPostFix from './user'
 import resource from './resource'

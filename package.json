@@ -7,7 +7,9 @@
   "scripts": {
     "lint": "lerna run lint --parallel",
     "bot": "cd packages/bot && yarn start",
-    "deploy": "lerna run package && lerna run up"
+    "bot-prod": "PRODUCTION=true yarn bot",
+    "deploy": "lerna run package && lerna run up",
+    "deploy-prod": "PRODUCTION=true yarn deploy"
   },
   "devDependencies": {
     "lerna": "^3.22.1"

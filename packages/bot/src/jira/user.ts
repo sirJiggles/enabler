@@ -1,4 +1,4 @@
-import config from '../config'
+import config from '../config/index'
 
 const getUser = (assignee?: string) => {
   // it should not be the case, but this func could be used incorrectly

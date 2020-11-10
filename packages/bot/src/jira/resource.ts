@@ -1,4 +1,4 @@
-import config from '../config'
+import config from '../config/index'
 import * as ax from 'axios'
 
 // I know it is global but it does not need to be exported from the file
@@ -39,8 +39,13 @@ const resource = async (jql: string) => {
         },
       },
     )
+    // console.log('we got a response all right')
+
+    // console.log(response)
+
     return response.data
   } catch (error) {
+    console.error(error)
     throw new Error(error)
   }
 }

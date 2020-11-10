@@ -1,4 +1,4 @@
-import config from '../config'
+import config from '../config/index'
 
 // just get jira assignees in JQL format for queries
 const getAssignees = () => {

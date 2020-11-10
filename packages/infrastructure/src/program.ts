@@ -4,7 +4,7 @@ import botLambda from './lambda'
 
 const program = () => {
   dotenv.config({
-    path: process.env.ENV_PATH || undefined,
+    path: process.env.PRODUCTION ? '.env.prod' : undefined,
   })
 
   // create the lambda for the bot

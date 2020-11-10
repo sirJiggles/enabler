@@ -1,6 +1,6 @@
 import resource from './resource'
 import format from './format'
-import config from '../config'
+import config from '../config/index'
 import getAssignees from './getAssignees'
 
 const usersWithNothingInProgress = async (messagePrefix: string) => {

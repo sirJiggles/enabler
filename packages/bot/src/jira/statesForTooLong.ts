@@ -1,6 +1,6 @@
 import resource from './resource'
 import format from './format'
-import config from '../config'
+import config from '../config/index'
 import { IJiraTooLongState } from './types'
 import userMentionPostFix from './user'
 
@@ -14,7 +14,7 @@ const stateForTooLong = async (tooLongState: IJiraTooLongState) => {
   // create a message about it for the right user
   let message = ''
   tickets.forEach((ticket) => {
-    message += `${emoji} ${ticket.id} has been ${state} a while`
+    message += `${emoji} ${ticket.id} has been in the state: ${state} a while`
     message += userMentionPostFix(ticket.assignee)
   })
 

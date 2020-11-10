@@ -7,7 +7,7 @@ import sendMessage from './slack/sendMessage'
 const program = async () => {
   // get the env vars
   dotenv.config({
-    path: process.env.ENV_PATH || undefined,
+    path: process.env.PRODUCTION ? '.env.prod' : undefined,
   })
 
   // make sure to handle any errors
@@ -20,6 +20,8 @@ const program = async () => {
   message += await statesForTooLong()
   message += await usersWithNothingInProgress('🚨')
   message += await topPriorityInProgress('↕️')
+
+  console.log('about to send out the message', message)
 
   // if there is something to send, send it in slack
   if (message !== '') {
