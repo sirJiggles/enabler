@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "lint": "lerna run lint --parallel",
-    "bot": "cd packages/bot && yarn start"
+    "bot": "cd packages/bot && yarn start",
+    "deploy": "lerna run package && lerna run up"
   },
   "devDependencies": {
     "lerna": "^3.22.1"

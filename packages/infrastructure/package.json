@@ -8,7 +8,8 @@
   "private": false,
   "scripts": {
     "build": "tsc -p .",
-    "lint": "eslint '**/*.{js,ts}' --fix"
+    "lint": "eslint '**/*.{js,ts}' --fix",
+    "up": "pulumi up --yes"
   },
   "devDependencies": {
     "@enabler/eslint-config": "1.0.0",
