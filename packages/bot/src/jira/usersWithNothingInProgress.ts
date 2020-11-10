@@ -1,19 +1,14 @@
 import resource from './resource'
 import format from './format'
 import config from '../config'
-import { IJiraQueryStates } from './types'
 import getAssignees from './getAssignees'
 
-const usersWithNothingInState = async (
-  state: IJiraQueryStates,
-  messagePrefix: string,
-) => {
-  const { statusName } = config.jira[state]
-
+const usersWithNothingInProgress = async (messagePrefix: string) => {
+  const { inProgressState } = config.jira
   // get the tickets for all users in a state
   const tickets = format(
     await resource(
-      `assignee in (${getAssignees()}) and status = "${statusName}"`,
+      `assignee in (${getAssignees()}) and status = "${inProgressState}"`,
     ),
   )
 
@@ -24,11 +19,11 @@ const usersWithNothingInState = async (
   const assigneesWithTickets = tickets.map((ticket) => ticket.assignee)
   users.forEach((user) => {
     if (!assigneesWithTickets.includes(user.jiraAccountId)) {
-      message += `${messagePrefix} @${user.slackHandle}, you have no tickets in the state ${state}\n`
+      message += `${messagePrefix} @${user.slackHandle}, you have no tickets in the state ${inProgressState}\n`
     }
   })
 
   return message
 }
 
-export default usersWithNothingInState
+export default usersWithNothingInProgress

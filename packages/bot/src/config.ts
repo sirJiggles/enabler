@@ -30,30 +30,30 @@ const config = {
     apiUserEmail: 'gareth126@gmail.com',
     // the JIRA project you want to search for issues in
     project: '4ooling',
-    blocked: {
-      // how long can a ticket be in the blocked state before
-      // a slack notification is sent in days
-      timeLimit: 1,
-      // what you call the blocked state in JIRA, needs to be used in jql
-      statusName: 'Blocked',
+
+    inProgressState: 'In Progress',
+
+    // configure how long tickets can be in states
+    tooLongStatuses: [
+      {
+        state: 'Blocked',
+        timeLimit: 1,
+        emoji: '✋',
+      },
+      {
+        state: 'In Progress',
+        timeLimit: 1,
+        emoji: '⚙️',
+      },
+    ],
+    // we will check the following types with the following
+    // statuses against each other. note your "inProgress" status
+    // name is included implicitly as we will check this list
+    // against whatever is in progress
+    priorityCheck: {
+      typesToCheck: ['Bug', 'Story'],
+      inTheStatus: ['Backlog', 'Selected for Development'],
     },
-    inProgress: {
-      // how long can a ticket be in the in progress state before
-      // a slack notification is sent in days
-      timeLimit: 1,
-      // what you call the in progress state in JIRA, needs to be used
-      //in jql
-      statusName: 'In Progress',
-    },
-    // to work out if people are working on the highest priority
-    // issues we need to know the priority names and the order of
-    // them for you in JIRA, the order is IMPORTANT here
-    // set them from highest to lowest, highest at 0 index
-    priorities: ['Highest', 'High', 'Medium', 'Low', 'Lowest'],
-    // to work out if people are working on highest priority issues
-    // we need to know the states where the work is 'done' and should
-    // not be compared
-    doneStates: ['Done', 'Closed', 'Resolved'],
   },
 }
 

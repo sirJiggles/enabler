@@ -4,7 +4,6 @@ const format = (result: { issues: Array<jira.IIssue> }) => {
     return {
       assignee: issue.fields.assignee?.accountId,
       id: issue.key,
-      priority: issue.fields.priority.name,
       status: issue.fields.status,
     }
   })

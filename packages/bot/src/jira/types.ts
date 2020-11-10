@@ -1,1 +1,5 @@
-export type IJiraQueryStates = 'blocked' | 'inProgress'
+export type IJiraTooLongState = {
+  state: string
+  timeLimit: number
+  emoji: string
+}

@@ -1,51 +1,39 @@
 import config from '../config'
 import format from './format'
+import userMentionPostFix from './user'
 import resource from './resource'
 
 const topPriorityInProgress = async (messagePrefix: string) => {
-  const { priorities, doneStates, inProgress } = config.jira
+  const { priorityCheck, inProgressState } = config.jira
+  const { typesToCheck, inTheStatus } = priorityCheck
 
-  const orderedTickets = format(
-    await resource(
-      `status not in (${doneStates.join(',')}) order by priority DESC`,
-    ),
-  )
+  const JQL = `issuetype in (${typesToCheck
+    .map((s) => `"${s}"`)
+    .join(',')}) and status in (${inTheStatus
+    .map((s) => `"${s}"`)
+    .join(',')}, "${inProgressState}") order by Rank ASC`
 
-  const assigned = orderedTickets.filter(
-    (ticket) => ticket.assignee !== undefined,
-  )
-  const unassigned = orderedTickets.filter(
-    (ticket) => ticket.assignee === undefined,
-  )
+  const backlog = format(await resource(JQL))
+
+  let lastInProgressFound = false
   let message = ''
-  // this is a nested loop, so if you have a shit load of tickets
-  // or team members do not do this, maybe do same fancy reducer or
-  // something :D but for our backlog and team this is cool 😎
-  // or even better just make the JQL more specific by adding more
-  // states to ignore in the config or something
-  assigned.forEach((assignedTicket) => {
-    unassigned.forEach((unassignedTicket) => {
-      // we check if the priority is greater here, it seems like an issue
-      // but it is right as if assigned is 1, and unassigned is 0 then
-      // 1 is further along the array, this "down" the priority
-      // than 0
-      if (
-        priorities.indexOf(assignedTicket.priority) >
-        priorities.indexOf(unassignedTicket.priority)
-      ) {
-        // we only care if the issue that is assigned is in progress
-        // if it is, it should not be
-        if (assignedTicket.status.name === inProgress.statusName) {
-          // get the user so we can message them about the ticket
-          const user = config.users.filter(
-            (user) => user.jiraAccountId === assignedTicket.assignee,
-          )[0]
-          // make a message for the bot
-          message += `${messagePrefix} ticket ${assignedTicket.id} is in progress and lower priority than ${unassignedTicket.id}, @${user.slackHandle}\n`
-        }
+
+  backlog.forEach((ticket) => {
+    if (!lastInProgressFound) {
+      if (ticket.status.name !== inProgressState) {
+        // at this point we have reached a ticket that is not
+        // in progress. ANYTHING after this is bellow top prio
+        lastInProgressFound = true
       }
-    })
+    }
+    if (lastInProgressFound && ticket.status.name === inProgressState) {
+      // if we find something in progress after finding something that is
+      // not, it is not the highest prio, send a message about it
+      message += `${messagePrefix} ticket ${ticket.id} is in progress and not top of the backlog`
+      message += userMentionPostFix(ticket.assignee)
+    }
   })
+
   return message
 }
 
