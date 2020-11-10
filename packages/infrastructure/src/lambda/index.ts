@@ -35,6 +35,7 @@ const botLambda = () => {
       variables: {
         BOT_TOKEN: botToken,
         JIRA_TOKEN: jiraToken,
+        PRODUCTION: process.env.PRODUCTION || 'false',
       },
     },
     // we want to run the default function from the index

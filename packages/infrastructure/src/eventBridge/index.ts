@@ -6,6 +6,7 @@ const bridge = (name: string, arn: pulumi.Input<string>, schedule: string) => {
     // run it every ten mins, this should be moved into a config
     // scheduleExpression: '0 10,15 * * *',
     scheduleExpression: `cron(${schedule})`,
+    description: 'Enabler bot',
   })
 
   const target = new aws.cloudwatch.EventTarget(`${name}-target`, {

@@ -14,7 +14,7 @@ const program = () => {
   // run it at 10am and 15pm on a weekday
   // const schedule = '0 10,15 ? * MON-FRI *'
   // bridge('enabler-event', lambda.arn, schedule)
-  bridge('enabler-event', lambda.arn, '0/2 8-22 ? * MON-FRI *')
+  bridge('enabler-event', lambda.arn, '0 10,15 ? * MON-FRI *')
 }
 
 export default program
