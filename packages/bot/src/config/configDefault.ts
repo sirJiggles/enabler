@@ -27,6 +27,7 @@ const configDefault: BotConfig = {
         state: 'In Progress',
         timeLimit: 1,
         emoji: '⚙️',
+        excludeIssueTypes: ['Epic'],
       },
     ],
     priorityCheck: {

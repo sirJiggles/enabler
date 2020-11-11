@@ -1,3 +1,10 @@
+export type TooLongStateConfig = {
+  state: string
+  timeLimit: number
+  emoji: string
+  excludeIssueTypes?: Array<string>
+}
+
 export type BotConfig = {
   users: Array<{
     jiraAccountId: string
@@ -22,11 +29,7 @@ export type BotConfig = {
     apiUserEmail: string
     // the JIRA project you want to search for issues in
     project: string
-    tooLongStatuses: Array<{
-      state: string
-      timeLimit: number
-      emoji: string
-    }>
+    tooLongStatuses: Array<TooLongStateConfig>
     // we will check the following types with the following
     // statuses against each other. note your "inProgress" status
     // name is included implicitly as we will check this list

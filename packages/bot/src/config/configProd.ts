@@ -58,6 +58,7 @@ const configProd: BotConfig = {
         state: 'In Progress',
         timeLimit: 3,
         emoji: '⚙️',
+        excludeIssueTypes: ['Epic'],
       },
       {
         state: 'Information Needed',
