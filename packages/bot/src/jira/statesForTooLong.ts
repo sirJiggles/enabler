@@ -7,7 +7,7 @@ import ticketLink from './ticketLink'
 
 const stateForTooLong = async (tooLongState: IJiraTooLongState) => {
   const { state, emoji, timeLimit } = tooLongState
-  const JQL = `status = "${state}" and not status changed after -${timeLimit}d`
+  const JQL = `status = "${state}"`
 
   // get the tickets in the state for too long
   const tickets = format(await resource(JQL))
@@ -15,10 +15,12 @@ const stateForTooLong = async (tooLongState: IJiraTooLongState) => {
   // create a message about it for the right user
   let message = ''
   tickets.forEach((ticket) => {
-    message += `${emoji} ${ticketLink(
-      ticket.id,
-    )} has been in the state: ${state} a while`
-    message += userMentionPostFix(ticket.assignee)
+    if (ticket.daysInState >= timeLimit) {
+      message += `${emoji} ${ticketLink(ticket.id)} has been ${state} for ${
+        ticket.daysInState
+      } days`
+      message += userMentionPostFix(ticket.assignee)
+    }
   })
 
   return message

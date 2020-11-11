@@ -21,10 +21,9 @@ const program = async () => {
   message += await usersWithNothingInProgress('🚨')
   message += await topPriorityInProgress('↕️')
 
-  console.log('about to send out the message', message)
-
   // if there is something to send, send it in slack
   if (message !== '') {
+    console.log('about to send out the message', message)
     await sendMessage(message)
   }
 }

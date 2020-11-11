@@ -20,7 +20,7 @@ const configDefault: BotConfig = {
     tooLongStatuses: [
       {
         state: 'Blocked',
-        timeLimit: 1,
+        timeLimit: 9,
         emoji: '✋',
       },
       {
