@@ -24,6 +24,18 @@ const botLambda = () => {
   // attach the policy
   rolePolicyAttachment(role)
 
+  const variables: {
+    [key: string]: string
+  } = {
+    BOT_TOKEN: botToken,
+    JIRA_TOKEN: jiraToken,
+  }
+
+  // only add prod env var if need to
+  if (process.env.PRODUCTION) {
+    variables['PRODUCTION'] = 'true'
+  }
+
   // Next, create the Lambda function itself:
   return new aws.lambda.Function('enablerBotLambda', {
     code: new pulumi.asset.AssetArchive({
@@ -32,11 +44,7 @@ const botLambda = () => {
     }),
     environment: {
       // these are needed to run the lambda
-      variables: {
-        BOT_TOKEN: botToken,
-        JIRA_TOKEN: jiraToken,
-        PRODUCTION: process.env.PRODUCTION || 'false',
-      },
+      variables,
     },
     // we want to run the default function from the index
     handler: 'index.handler',

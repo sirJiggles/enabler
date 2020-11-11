@@ -29,7 +29,7 @@ const program = async () => {
 
   // if there is something to send, send it in slack
   if (mainChannelMessages !== '') {
-    console.log('sending on the main channel', mainChannelMessages)
+    console.log('sending on the main channel\n', mainChannelMessages)
     await sendMessage(mainChannelMessages)
   }
 
@@ -40,7 +40,7 @@ const program = async () => {
 
   if (otherChannelMessages) {
     for (const item of otherChannelMessages) {
-      console.log(`sending message in ${item.customChannel}: ${item.message}`)
+      console.log(`sending message in ${item.customChannel}\n ${item.message}`)
       await sendMessage(item.message, item.customChannel)
     }
   }
