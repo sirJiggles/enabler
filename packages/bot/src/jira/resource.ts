@@ -39,9 +39,6 @@ const resource = async (jql: string) => {
         },
       },
     )
-    // console.log('we got a response all right')
-
-    // console.log(response)
 
     return response.data
   } catch (error) {

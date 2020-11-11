@@ -2,6 +2,7 @@ import config from '../config/index'
 import format from './format'
 import userMentionPostFix from './user'
 import resource from './resource'
+import ticketLink from './ticketLink'
 
 const topPriorityInProgress = async (messagePrefix: string) => {
   const { priorityCheck, inProgressState } = config.jira
@@ -29,7 +30,9 @@ const topPriorityInProgress = async (messagePrefix: string) => {
     if (lastInProgressFound && ticket.status.name === inProgressState) {
       // if we find something in progress after finding something that is
       // not, it is not the highest prio, send a message about it
-      message += `${messagePrefix} ticket ${ticket.id} is in progress and not top of the backlog`
+      message += `${messagePrefix} ${ticketLink(
+        ticket.id,
+      )} is in progress and not top of the backlog`
       message += userMentionPostFix(ticket.assignee)
     }
   })
