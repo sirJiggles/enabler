@@ -2,6 +2,7 @@ export type BotConfig = {
   users: Array<{
     jiraAccountId: string
     slackHandle: string
+    excludeFromProgressCheck?: boolean
   }>
 
   // what channel would you like the bot to talk in?

@@ -18,7 +18,10 @@ const usersWithNothingInProgress = async (messagePrefix: string) => {
   const { users } = config
   const assigneesWithTickets = tickets.map((ticket) => ticket.assignee)
   users.forEach((user) => {
-    if (!assigneesWithTickets.includes(user.jiraAccountId)) {
+    if (
+      !assigneesWithTickets.includes(user.jiraAccountId) &&
+      !user.excludeFromProgressCheck
+    ) {
       message += `${messagePrefix} @${user.slackHandle}, you have no tickets in the state ${inProgressState}\n`
     }
   })

@@ -9,6 +9,7 @@ const configProd: BotConfig = {
     {
       jiraAccountId: '5ee3a361a7a4030ab398ae2d',
       slackHandle: 'garik',
+      excludeFromProgressCheck: true,
     },
     {
       jiraAccountId: '5eeb5567a228c50ab94507e9',
@@ -17,6 +18,7 @@ const configProd: BotConfig = {
     {
       jiraAccountId: '5f3bc0d1323607003889e418',
       slackHandle: 'boris',
+      excludeFromProgressCheck: true,
     },
     {
       jiraAccountId: '5eeb5566b364ce0abe6a7ce7',
@@ -33,6 +35,7 @@ const configProd: BotConfig = {
     {
       jiraAccountId: '5eeb5568868ce30ac4b71d3e',
       slackHandle: 'gregor',
+      excludeFromProgressCheck: true,
     },
     {
       jiraAccountId: '5f4cab9b91e67a003f231f04',
