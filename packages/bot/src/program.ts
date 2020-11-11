@@ -16,15 +16,33 @@ const program = async () => {
   })
 
   // build up the message to send to the bot
-  let message = ''
-  message += await statesForTooLong()
-  message += await usersWithNothingInProgress('🚨')
-  message += await topPriorityInProgress('↕️')
+  let mainChannelMessages = ''
+  mainChannelMessages += await usersWithNothingInProgress('🚨')
+  mainChannelMessages += await topPriorityInProgress('↕️')
+
+  const messagesForManyChannels = await statesForTooLong()
+  // pull out messages for main channel and add them
+  mainChannelMessages += messagesForManyChannels
+    .filter((m) => !m.customChannel)
+    .map((m) => m.message)
+    .join('')
 
   // if there is something to send, send it in slack
-  if (message !== '') {
-    console.log('about to send out the message', message)
-    await sendMessage(message)
+  if (mainChannelMessages !== '') {
+    console.log('sending on the main channel', mainChannelMessages)
+    await sendMessage(mainChannelMessages)
+  }
+
+  // now handle the other channels
+  const otherChannelMessages = messagesForManyChannels.filter(
+    (m) => m.customChannel,
+  )
+
+  if (otherChannelMessages) {
+    for (const item of otherChannelMessages) {
+      console.log(`sending message in ${item.customChannel}: ${item.message}`)
+      await sendMessage(item.message, item.customChannel)
+    }
   }
 }
 

@@ -6,7 +6,7 @@ import ticketLink from './ticketLink'
 import { TooLongStateConfig } from '../config/types'
 
 const stateForTooLong = async (tooLongState: TooLongStateConfig) => {
-  const { state, emoji, timeLimit, excludeIssueTypes } = tooLongState
+  const { state, emoji, timeLimit, excludeIssueTypes, channel } = tooLongState
   let JQL = `status = "${state}"`
 
   // if we want to exclude some issue types from the too long check
@@ -27,19 +27,28 @@ const stateForTooLong = async (tooLongState: TooLongStateConfig) => {
     }
   })
 
-  return message
+  if (message) {
+    return {
+      customChannel: channel,
+      message,
+    }
+  }
 }
 
 const statesForTooLong = async () => {
   const { tooLongStatuses } = config.jira
 
-  let message = ''
+  // not just a string message here as we could post to many channels
+  const messages = []
 
   for (const tooLongStatus of tooLongStatuses) {
-    message += await stateForTooLong(tooLongStatus)
+    const message = await stateForTooLong(tooLongStatus)
+    if (message) {
+      messages.push(message)
+    }
   }
 
-  return message
+  return messages
 }
 
 export default statesForTooLong

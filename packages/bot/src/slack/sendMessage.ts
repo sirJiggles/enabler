@@ -1,13 +1,17 @@
 import { WebClient } from '@slack/web-api'
 import config from '../config/index'
 
-const sendMessage = async (message: string) => {
+const sendMessage = async (
+  message: string,
+  // use the main channel in the config if not defined
+  channel: string = config.channel,
+) => {
   const web = new WebClient(process.env.BOT_TOKEN)
 
   try {
     const res = await web.chat.postMessage({
       // what channel are we posting to
-      channel: config.channel,
+      channel,
       // should we mention people?
       link_names: true,
       // what is the final message

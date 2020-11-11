@@ -3,6 +3,7 @@ export type TooLongStateConfig = {
   timeLimit: number
   emoji: string
   excludeIssueTypes?: Array<string>
+  channel?: string
 }
 
 export type BotConfig = {

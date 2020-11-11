@@ -22,6 +22,7 @@ const configDefault: BotConfig = {
         state: 'Blocked',
         timeLimit: 9,
         emoji: '✋',
+        channel: 'C01F8J31RFS',
       },
       {
         state: 'In Progress',

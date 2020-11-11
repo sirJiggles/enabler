@@ -64,6 +64,7 @@ const configProd: BotConfig = {
         state: 'Information Needed',
         timeLimit: 2,
         emoji: '❓',
+        channel: 'C014BMXFTPD',
       },
     ],
     priorityCheck: {
