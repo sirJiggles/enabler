@@ -75,12 +75,12 @@ const configProd: BotConfig = {
         emoji: '⚙️',
         excludeIssueTypes: ['Epic'],
       },
-      {
-        state: 'Information Needed',
-        timeLimit: 2,
-        emoji: '❓',
-        channel: 'C014BMXFTPD',
-      },
+      // {
+      //   state: 'Information Needed',
+      //   timeLimit: 2,
+      //   emoji: '❓',
+      //   channel: 'C014BMXFTPD',
+      // },
     ],
     priorityCheck: {
       typesToCheck: ['Bug', 'Story'],
