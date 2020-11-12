@@ -59,6 +59,7 @@ const configProd: BotConfig = {
   ],
   channel: 'C89L7PP1C',
   jira: {
+    includeWeekends: true,
     domain: 'qualifyze',
     apiUserEmail: 'gareth.fuller@qualifyze.com',
     inProgressState: 'In Progress',

@@ -1,10 +1,15 @@
-const diffInDays = (timestamp: string) => {
+const diffInDays = (timestamp: string, includeWeekends: boolean = true) => {
   const then = new Date(timestamp)
   const now = new Date()
 
   const diff = now.getTime() - then.getTime()
 
-  const diffInDays = Math.ceil(diff / (1000 * 3600 * 24))
+  const daysDiff = Math.ceil(diff / (1000 * 3600 * 24))
+
+  // if you do not care if it is a weekend or not just bail now
+  if (includeWeekends) {
+    return daysDiff
+  }
 
   // we need to remove any weekends so we will count how many weekends
   // there could be based on the now and then days
@@ -17,12 +22,12 @@ const diffInDays = (timestamp: string) => {
 
   // at this point we know if it has been in state for less time
   // than a weekend could happen anyway so just bail
-  if (diffInDays < daysTillWeekend) {
-    return diffInDays
+  if (daysDiff < daysTillWeekend) {
+    return daysDiff
   }
 
   // remove the 'remainder of the week'
-  const daysStillToCalc = diffInDays - daysTillWeekend
+  const daysStillToCalc = daysDiff - daysTillWeekend
   // how many weekends are in those days left over
   const weekendsInThoseDays = Math.ceil(daysStillToCalc / 7)
   // how many weekdays are left over if we remove those weekend days

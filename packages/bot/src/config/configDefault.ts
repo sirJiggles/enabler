@@ -13,6 +13,7 @@ const configDefault: BotConfig = {
   ],
   channel: 'C01DLHY6FM3',
   jira: {
+    includeWeekends: false,
     domain: '4ools',
     apiUserEmail: 'gareth126@gmail.com',
     project: '4ooling',

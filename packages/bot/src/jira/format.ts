@@ -1,3 +1,4 @@
+import config from '../config'
 import diffInDays from './diffInDays'
 
 const format = (result: { issues: Array<jira.IIssue> }) => {
@@ -7,7 +8,10 @@ const format = (result: { issues: Array<jira.IIssue> }) => {
       assignee: issue.fields.assignee?.accountId,
       id: issue.key,
       status: issue.fields.status,
-      daysInState: diffInDays(issue.fields.statuscategorychangedate),
+      daysInState: diffInDays(
+        issue.fields.statuscategorychangedate,
+        config.jira.includeWeekends,
+      ),
     }
   })
 }

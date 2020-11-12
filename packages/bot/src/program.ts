@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv'
 import statesForTooLong from './jira/statesForTooLong'
 import topPriorityInProgress from './jira/topPriorityInProgress'
-import usersWithNothingInProgress from './jira/usersWithNothingInProgress'
+import usersWithItemsInProgress from './jira/usersWithItemsInProgress'
 import sendMessage from './slack/sendMessage'
 
 const program = async () => {
@@ -17,7 +17,7 @@ const program = async () => {
 
   // build up the message to send to the bot
   let mainChannelMessages = ''
-  mainChannelMessages += await usersWithNothingInProgress('🚨')
+  mainChannelMessages += await usersWithItemsInProgress('🚨')
   mainChannelMessages += await topPriorityInProgress('↕️')
 
   const messagesForManyChannels = await statesForTooLong()
