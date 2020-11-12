@@ -44,14 +44,17 @@ const configProd: BotConfig = {
     {
       jiraAccountId: '5f04d2521a26ad0014f31698',
       slackHandle: 'vero',
+      excludeFromProgressCheck: true,
     },
     {
       jiraAccountId: '5f92c3d29c31840076fc3d12',
       slackHandle: 'Ben Scheepers',
+      excludeFromProgressCheck: true,
     },
     {
       jiraAccountId: '5f1a81ac07efc4002867e620',
       slackHandle: 'cesc',
+      excludeFromProgressCheck: true,
     },
   ],
   channel: 'C89L7PP1C',
