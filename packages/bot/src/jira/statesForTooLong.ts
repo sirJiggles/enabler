@@ -4,9 +4,24 @@ import config from '../config/index'
 import userMentionPostFix from './user'
 import ticketLink from './ticketLink'
 import { TooLongStateConfig } from '../config/types'
+import isWithinSchedule from './isWithinSchedule'
 
 const stateForTooLong = async (tooLongState: TooLongStateConfig) => {
-  const { state, emoji, timeLimit, excludeIssueTypes, channel } = tooLongState
+  const {
+    state,
+    emoji,
+    timeLimit,
+    excludeIssueTypes,
+    channel,
+    schedule,
+  } = tooLongState
+
+  // if there is a schedule to run this job for, check if we are within
+  // it first before doing anything
+  if (!isWithinSchedule(schedule)) {
+    return
+  }
+
   let JQL = `status = "${state}"`
 
   // if we want to exclude some issue types from the too long check

@@ -1,9 +1,24 @@
+// when you want to run something only on some
+// days, or between some hours
+export type Schedule = {
+  // optional list of days to run 0-6
+  days?: Array<number>
+  // optional time to run start
+  hourFrom?: number
+  // optional time to run end
+  hourUntil?: number
+}
+
 export type TooLongStateConfig = {
   state: string
   timeLimit: number
   emoji: string
+  // option issue types to exclude from checks
   excludeIssueTypes?: Array<string>
+  // an optional channel to post these messages in
   channel?: string
+  // when you might want to run these checks
+  schedule?: Schedule
 }
 
 export type BotConfig = {

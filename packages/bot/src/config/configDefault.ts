@@ -30,6 +30,11 @@ const configDefault: BotConfig = {
         timeLimit: 1,
         emoji: '⚙️',
         excludeIssueTypes: ['Epic'],
+        schedule: {
+          days: [1],
+          hourFrom: 22,
+          hourUntil: 23,
+        },
       },
     ],
     priorityCheck: {

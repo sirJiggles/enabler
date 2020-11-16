@@ -76,12 +76,20 @@ const configProd: BotConfig = {
         emoji: '⚙️',
         excludeIssueTypes: ['Epic'],
       },
-      // {
-      //   state: 'Information Needed',
-      //   timeLimit: 2,
-      //   emoji: '❓',
-      //   channel: 'C014BMXFTPD',
-      // },
+      {
+        state: 'Information Needed',
+        timeLimit: 3,
+        emoji: '❓',
+        channel: 'C014BMXFTPD',
+        // when do we want to run this one
+        schedule: {
+          // on monday
+          days: [1],
+          // for the first run only
+          hourFrom: 8,
+          hourUntil: 12,
+        },
+      },
     ],
     priorityCheck: {
       typesToCheck: ['Bug', 'Story'],
