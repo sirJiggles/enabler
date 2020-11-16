@@ -82,6 +82,12 @@ const configProd: BotConfig = {
         emoji: '✅',
       },
       {
+        state: 'Done',
+        timeLimit: 2,
+        emoji: '🚀',
+        excludeIssueTypes: ['Subtask', 'Sub-task'],
+      },
+      {
         state: 'Information Needed',
         timeLimit: 3,
         emoji: '❓',
