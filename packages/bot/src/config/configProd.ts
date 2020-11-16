@@ -72,7 +72,7 @@ const configProd: BotConfig = {
       },
       {
         state: 'In Progress',
-        timeLimit: 3,
+        timeLimit: 4,
         emoji: '⚙️',
         excludeIssueTypes: ['Epic'],
       },

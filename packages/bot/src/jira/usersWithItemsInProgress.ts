@@ -4,11 +4,13 @@ import config from '../config/index'
 import getAssignees from './getAssignees'
 
 const usersWithItemsInProgress = async (messagePrefix: string) => {
-  const { inProgressState } = config.jira
+  const { inProgressState, priorityCheck } = config.jira
   // get the tickets for all users in a state
   const tickets = format(
     await resource(
-      `assignee in (${getAssignees()}) and status = "${inProgressState}"`,
+      `assignee in (${getAssignees()}) and status = "${inProgressState}" and issuetype in (${priorityCheck.typesToCheck
+        .map((s) => `"${s}"`)
+        .join(',')})`,
     ),
   )
 
