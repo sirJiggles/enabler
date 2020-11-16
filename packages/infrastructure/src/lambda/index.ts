@@ -50,6 +50,7 @@ const botLambda = () => {
     handler: 'index.handler',
     runtime: 'nodejs12.x',
     role: role.arn,
+    timeout: 7,
   })
 }
 
