@@ -77,15 +77,50 @@ const configProd: BotConfig = {
         excludeIssueTypes: ['Epic'],
       },
       {
+        state: 'In Review',
+        timeLimit: 2,
+        emoji: '✅',
+      },
+      {
         state: 'Information Needed',
         timeLimit: 3,
         emoji: '❓',
         channel: 'C014BMXFTPD',
-        // when do we want to run this one
         schedule: {
-          // on monday
           days: [1],
-          // for the first run only
+          hourFrom: 8,
+          hourUntil: 12,
+        },
+      },
+      {
+        state: 'Ice Box',
+        timeLimit: 10,
+        emoji: '🧊',
+        channel: 'C014BMXFTPD',
+        schedule: {
+          days: [2],
+          hourFrom: 8,
+          hourUntil: 12,
+        },
+      },
+      {
+        state: 'New',
+        timeLimit: 10,
+        emoji: '✨',
+        channel: 'C014BMXFTPD',
+        schedule: {
+          days: [3],
+          hourFrom: 8,
+          hourUntil: 12,
+        },
+      },
+      {
+        state: 'To Do',
+        timeLimit: 10,
+        emoji: '📝',
+        channel: 'C014BMXFTPD',
+        schedule: {
+          days: [4],
           hourFrom: 8,
           hourUntil: 12,
         },
