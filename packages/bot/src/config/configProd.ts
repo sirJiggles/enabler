@@ -59,7 +59,6 @@ const configProd: BotConfig = {
   ],
   channel: 'C89L7PP1C',
   jira: {
-    storyPointCustomField: 'customfield_10028',
     domain: 'qualifyze',
     apiUserEmail: 'gareth.fuller@qualifyze.com',
     inProgressState: 'In Progress',

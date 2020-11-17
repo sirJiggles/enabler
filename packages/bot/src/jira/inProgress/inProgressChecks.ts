@@ -3,6 +3,7 @@ import format from '../api/format'
 import config from '../../config/index'
 import getAssignees from '../util/getAssignees'
 import checkForUser from './checkForUser'
+import withoutStoryPoints from './withoutStoryPoints'
 
 const inProgressChecks = async () => {
   const { inProgressState, priorityCheck } = config.jira
@@ -23,6 +24,8 @@ const inProgressChecks = async () => {
   users.forEach((user) => {
     message += checkForUser(user, tickets)
   })
+
+  message += await withoutStoryPoints()
 
   return message
 }

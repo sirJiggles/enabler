@@ -39,8 +39,6 @@ export type BotConfig = {
   jira: {
     inProgressState: string
 
-    storyPointCustomField: string
-
     // this is the domain of your account so if your url is awesome.atlassian.net
     // the value here would be 'awesome'
     domain: string

@@ -8,7 +8,7 @@ const otherChannels = async (mixedMessages: Array<MixedMessages>) => {
   if (otherChannelMessages) {
     for (const item of otherChannelMessages) {
       console.log(`sending message in ${item.customChannel}\n ${item.message}`)
-      await sendMessage(item.message, item.customChannel)
+      // await sendMessage(item.message, item.customChannel)
     }
   }
 }

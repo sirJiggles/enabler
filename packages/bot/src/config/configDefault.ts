@@ -14,7 +14,6 @@ const configDefault: BotConfig = {
   channel: 'C01DLHY6FM3',
   jira: {
     domain: '4ools',
-    storyPointCustomField: 'customfield_10028',
     apiUserEmail: 'gareth126@gmail.com',
     project: '4ooling',
     inProgressState: 'In Progress',

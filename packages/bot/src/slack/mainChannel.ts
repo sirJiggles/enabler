@@ -21,7 +21,7 @@ const mainChannel = async (mixedMessages: Array<MixedMessages>) => {
   // if there is something to send, send it in slack
   if (messages !== '') {
     console.log('sending on the main channel\n', messages)
-    await sendMessage(messages)
+    // await sendMessage(messages)
   }
 }
 

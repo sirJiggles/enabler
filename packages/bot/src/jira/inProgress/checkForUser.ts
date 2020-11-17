@@ -23,16 +23,6 @@ const checkForUser = (user: UserConfig, tickets: Array<FormattedResponse>) => {
     message += `🤹‍♂️ <@${user.slackHandle}>, you have more than one issue in the state ${inProgressState}\n`
   }
 
-  // make sure for each ticket in progress it has story points
-  usersInProgressTickets.forEach((ticket) => {
-    if (!ticket.storyPoints) {
-      message += `🔢 ${ticketLink(
-        ticket.id,
-      )} is ${inProgressState} but has no story points`
-      message += userMentionPostFix(ticket.assignee)
-    }
-  })
-
   return message
 }
 
