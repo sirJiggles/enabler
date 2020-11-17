@@ -1,7 +1,6 @@
 import resource from '../api/resource'
 import format from '../api/format'
 import ticketLink from '../util/ticketLink'
-import userMentionPostFix from '../util/user'
 import config from '../../config'
 import within from '../util/in'
 
@@ -16,10 +15,14 @@ const noAssignedUserSubTask = async () => {
     ),
   )
   tickets.forEach((ticket) => {
-    message += `🧩 SubTask ${ticketLink(
-      ticket.id,
-    )} has no assignee, yet the parent issue is assigned`
-    message += userMentionPostFix(ticket.assignee)
+    // it must have a parent tbh, is a sub task
+    if (ticket.parent) {
+      message += `🧩 SubTask ${ticketLink(
+        ticket.id,
+      )} has no assignee, yet the parent issue (${ticketLink(
+        ticket.parent.id,
+      )}) is assigned`
+    }
   })
 
   return message
