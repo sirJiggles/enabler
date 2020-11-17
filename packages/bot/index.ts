@@ -18,7 +18,7 @@ const handler = async () => {
 }
 
 // for running locally (just comment it out when not)
-export default handler()
+// export default handler()
 
 // for running as a lambda
-// exports.handler = handler
+exports.handler = handler
