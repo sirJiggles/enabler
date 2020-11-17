@@ -48,13 +48,15 @@ export type BotConfig = {
     // the JIRA project you want to search for issues in
     project: string
     tooLongStatuses: Array<TooLongStateConfig>
-    // we will check the following types with the following
-    // statuses against each other. note your "inProgress" status
-    // name is included implicitly as we will check this list
-    // against whatever is in progress
-    priorityCheck: {
-      typesToCheck: Array<string>
-      inTheStatus: Array<string>
-    }
+
+    // types of issues to check, when doing things like
+    // - what is being worked on
+    // - is it high prio
+    // - what has story points when in progress
+    // - what has sub tasks that need to be assigned
+    issueTypesToCheck: Array<string>
+    issueStatusesToCheck: Array<string>
+    // ana array of what you define as "sub tasks" in JIRA
+    subTaskTypes: Array<string>
   }
 }

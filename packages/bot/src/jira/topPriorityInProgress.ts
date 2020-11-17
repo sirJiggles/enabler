@@ -3,16 +3,18 @@ import format from './api/format'
 import userMentionPostFix from './util/user'
 import resource from './api/resource'
 import ticketLink from './util/ticketLink'
+import within from './util/in'
 
 const topPriorityInProgress = async (messagePrefix: string) => {
-  const { priorityCheck, inProgressState } = config.jira
-  const { typesToCheck, inTheStatus } = priorityCheck
+  const {
+    issueStatusesToCheck,
+    inProgressState,
+    issueTypesToCheck,
+  } = config.jira
 
-  const JQL = `issuetype in (${typesToCheck
-    .map((s) => `"${s}"`)
-    .join(',')}) and status in (${inTheStatus
-    .map((s) => `"${s}"`)
-    .join(',')}, "${inProgressState}") order by Rank ASC`
+  const JQL = `issuetype ${within(issueTypesToCheck)} and status ${within(
+    issueStatusesToCheck,
+  )} order by Rank ASC`
 
   const backlog = format(await resource(JQL))
 

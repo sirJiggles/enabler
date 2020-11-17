@@ -133,10 +133,9 @@ const configProd: BotConfig = {
         },
       },
     ],
-    priorityCheck: {
-      typesToCheck: ['Bug', 'Story'],
-      inTheStatus: ['To Do'],
-    },
+    issueTypesToCheck: ['Bug', 'Story'],
+    issueStatusesToCheck: ['To Do', 'In Progress'],
+    subTaskTypes: ['Subtask', 'Sub-task'],
   },
 }
 

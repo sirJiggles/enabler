@@ -1,5 +1,5 @@
 import inProgressChecks from '../jira/inProgress/inProgressChecks'
-import assignedChecks from '../jira/assigned/assignedChecks'
+import noAssignedUserSubTask from '../jira/subTasks/noAssignedUserSubTask'
 import topPriorityInProgress from '../jira/topPriorityInProgress'
 import sendMessage from '../slack/util/sendMessage'
 import { MixedMessages } from './types'
@@ -10,7 +10,7 @@ const mainChannel = async (mixedMessages: Array<MixedMessages>) => {
   let messages = ''
   messages += await inProgressChecks()
   messages += await topPriorityInProgress('↕️')
-  messages += await assignedChecks()
+  messages += await noAssignedUserSubTask()
 
   // pull out main channel messages from mixed ones
   messages += mixedMessages
@@ -21,7 +21,7 @@ const mainChannel = async (mixedMessages: Array<MixedMessages>) => {
   // if there is something to send, send it in slack
   if (messages !== '') {
     console.log('sending on the main channel\n', messages)
-    // await sendMessage(messages)
+    await sendMessage(messages)
   }
 }
 

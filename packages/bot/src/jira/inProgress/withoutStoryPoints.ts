@@ -1,17 +1,18 @@
 import config from '../../config'
 import format from '../api/format'
 import resource from '../api/resource'
+import within from '../util/in'
 import ticketLink from '../util/ticketLink'
 import userMentionPostFix from '../util/user'
 
 const withoutStoryPoints = async () => {
-  const { inProgressState, priorityCheck } = config.jira
+  const { inProgressState, issueTypesToCheck } = config.jira
   let message = ''
   const tickets = format(
     await resource(
-      `"Story Points[Number]" = null and status = "${inProgressState}" and issuetype in (${priorityCheck.typesToCheck
-        .map((s) => `"${s}"`)
-        .join(',')})`,
+      `"Story Points[Number]" = null and status = "${inProgressState}" and issuetype ${within(
+        issueTypesToCheck,
+      )}`,
     ),
   )
   tickets.forEach((ticket) => {

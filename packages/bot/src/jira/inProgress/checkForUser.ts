@@ -1,8 +1,6 @@
 import config from '../../config/index'
 import { UserConfig } from '../../config/types'
 import { FormattedResponse } from '../api/types'
-import ticketLink from '../util/ticketLink'
-import userMentionPostFix from '../util/user'
 
 const { inProgressState } = config.jira
 

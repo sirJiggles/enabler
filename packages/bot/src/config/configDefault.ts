@@ -36,10 +36,13 @@ const configDefault: BotConfig = {
         },
       },
     ],
-    priorityCheck: {
-      typesToCheck: ['Bug', 'Story'],
-      inTheStatus: ['Backlog', 'Selected for Development'],
-    },
+    issueTypesToCheck: ['Bug', 'Story'],
+    issueStatusesToCheck: [
+      'Backlog',
+      'Selected for Development',
+      'In Progress',
+    ],
+    subTaskTypes: ['Sub-task'],
   },
 }
 

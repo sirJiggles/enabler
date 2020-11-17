@@ -4,15 +4,16 @@ import config from '../../config/index'
 import getAssignees from '../util/getAssignees'
 import checkForUser from './checkForUser'
 import withoutStoryPoints from './withoutStoryPoints'
+import within from '../util/in'
 
 const inProgressChecks = async () => {
-  const { inProgressState, priorityCheck } = config.jira
+  const { inProgressState, issueTypesToCheck } = config.jira
   // get the tickets for all users in a state
   const tickets = format(
     await resource(
-      `assignee in (${getAssignees()}) and status = "${inProgressState}" and issuetype in (${priorityCheck.typesToCheck
-        .map((s) => `"${s}"`)
-        .join(',')})`,
+      `assignee in (${getAssignees()}) and status = "${inProgressState}" and issuetype ${within(
+        issueTypesToCheck,
+      )}`,
     ),
   )
 
