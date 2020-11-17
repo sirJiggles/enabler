@@ -1,8 +1,8 @@
 import config from '../config/index'
-import format from './format'
-import userMentionPostFix from './user'
-import resource from './resource'
-import ticketLink from './ticketLink'
+import format from './api/format'
+import userMentionPostFix from './util/user'
+import resource from './api/resource'
+import ticketLink from './util/ticketLink'
 
 const topPriorityInProgress = async (messagePrefix: string) => {
   const { priorityCheck, inProgressState } = config.jira

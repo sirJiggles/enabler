@@ -21,12 +21,14 @@ export type TooLongStateConfig = {
   schedule?: Schedule
 }
 
+export type UserConfig = {
+  jiraAccountId: string
+  slackHandle: string
+  excludeFromProgressCheck?: boolean
+}
+
 export type BotConfig = {
-  users: Array<{
-    jiraAccountId: string
-    slackHandle: string
-    excludeFromProgressCheck?: boolean
-  }>
+  users: Array<UserConfig>
 
   // what channel would you like the bot to talk in?
   // this is the channel ID you can get it from going to slack
@@ -37,7 +39,7 @@ export type BotConfig = {
   jira: {
     inProgressState: string
 
-    includeWeekends: boolean
+    storyPointCustomField: string
 
     // this is the domain of your account so if your url is awesome.atlassian.net
     // the value here would be 'awesome'

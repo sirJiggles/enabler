@@ -1,5 +1,5 @@
 import { WebClient } from '@slack/web-api'
-import config from '../config/index'
+import config from '../../config/index'
 
 const sendMessage = async (
   message: string,

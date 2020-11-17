@@ -1,4 +1,4 @@
-import config from '../config/index'
+import config from '../../config/index'
 
 const getUser = (assignee?: string) => {
   // it should not be the case, but this func could be used incorrectly
@@ -13,7 +13,7 @@ const userMentionPostFix = (assignee?: string) => {
     return ': [UNASSIGNED]\n'
   }
   const user = getUser(assignee)
-  return user ? `, waiting on @${user.slackHandle} \n` : '\n'
+  return user ? `, waiting on <@${user.slackHandle}>\n` : '\n'
 }
 
 export default userMentionPostFix

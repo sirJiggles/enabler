@@ -1,10 +1,10 @@
-import resource from './resource'
-import format from './format'
+import resource from './api/resource'
+import format from './api/format'
 import config from '../config/index'
-import userMentionPostFix from './user'
-import ticketLink from './ticketLink'
+import userMentionPostFix from './util/user'
+import ticketLink from './util/ticketLink'
 import { TooLongStateConfig } from '../config/types'
-import isWithinSchedule from './isWithinSchedule'
+import isWithinSchedule from './util/isWithinSchedule'
 
 const stateForTooLong = async (tooLongState: TooLongStateConfig) => {
   const {
@@ -22,7 +22,7 @@ const stateForTooLong = async (tooLongState: TooLongStateConfig) => {
     return
   }
 
-  let JQL = `status = "${state}"`
+  let JQL = `status = "${state}" and not status changed after -${timeLimit}d`
 
   // if we want to exclude some issue types from the too long check
   if (excludeIssueTypes) {
@@ -34,10 +34,11 @@ const stateForTooLong = async (tooLongState: TooLongStateConfig) => {
   // create a message about it for the right user
   let message = ''
   tickets.forEach((ticket) => {
-    if (ticket.daysInState >= timeLimit) {
-      message += `${emoji} ${ticketLink(ticket.id)} has been ${state} for ${
-        ticket.daysInState
-      } days`
+    // we only care about states for too long if there is an assignee
+    if (ticket.assignee) {
+      message += `${emoji} ${ticketLink(
+        ticket.id,
+      )} has been ${state} for over ${timeLimit} days`
       message += userMentionPostFix(ticket.assignee)
     }
   })

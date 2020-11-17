@@ -1,4 +1,4 @@
-import config from '../config/index'
+import config from '../../config/index'
 import * as ax from 'axios'
 
 // I know it is global but it does not need to be exported from the file

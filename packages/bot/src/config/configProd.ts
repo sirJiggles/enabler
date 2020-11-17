@@ -59,7 +59,7 @@ const configProd: BotConfig = {
   ],
   channel: 'C89L7PP1C',
   jira: {
-    includeWeekends: true,
+    storyPointCustomField: 'customfield_10028',
     domain: 'qualifyze',
     apiUserEmail: 'gareth.fuller@qualifyze.com',
     inProgressState: 'In Progress',
@@ -80,6 +80,8 @@ const configProd: BotConfig = {
         state: 'In Review',
         timeLimit: 2,
         emoji: '✅',
+        // in the review channel
+        channel: 'C01A3PR49R9',
       },
       {
         state: 'Done',

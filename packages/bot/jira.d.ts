@@ -147,6 +147,7 @@ declare namespace jira {
     self: string
     key: string
     fields: {
+      [key: string]: any
       statuscategorychangedate: string
       aggregatetimespent: any
       fixVersions: any[]

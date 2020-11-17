@@ -1,4 +1,4 @@
-import { Schedule } from '../config/types'
+import { Schedule } from '../../config/types'
 
 const isWithinSchedule = (schedule?: Schedule) => {
   if (!schedule || !schedule.days) {
