@@ -40,6 +40,7 @@ const configProd: BotConfig = {
     {
       jiraAccountId: '5f4cab9b91e67a003f231f04',
       slackHandle: 'pablo',
+      excludeFromProgressCheck: true,
     },
     {
       jiraAccountId: '5f04d2521a26ad0014f31698',
@@ -62,6 +63,9 @@ const configProd: BotConfig = {
     domain: 'qualifyze',
     apiUserEmail: 'gareth.fuller@qualifyze.com',
     inProgressState: 'In Progress',
+    issueTypesToCheck: ['Bug', 'Story'],
+    issueStatusesToCheck: ['To Do', 'In Progress'],
+    subTaskTypes: ['Subtask', 'Sub-task'],
     project: 'QC',
     tooLongStatuses: [
       {
@@ -133,9 +137,6 @@ const configProd: BotConfig = {
         },
       },
     ],
-    issueTypesToCheck: ['Bug', 'Story'],
-    issueStatusesToCheck: ['To Do', 'In Progress'],
-    subTaskTypes: ['Subtask', 'Sub-task'],
   },
 }
 
