@@ -29,10 +29,6 @@ const configProd: BotConfig = {
       slackHandle: 'jorge',
     },
     {
-      jiraAccountId: '5eeb556802b4400ac4cf580c',
-      slackHandle: 'richard',
-    },
-    {
       jiraAccountId: '5eeb5568868ce30ac4b71d3e',
       slackHandle: 'gregor',
       excludeFromProgressCheck: true,
