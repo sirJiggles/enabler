@@ -7,6 +7,11 @@ import { BotConfig } from './types'
 const configProd: BotConfig = {
   users: [
     {
+      slackHandle: 'nawres',
+      jiraAccountId: '5f468511d3796e00466b86c4',
+      excludeFromProgressCheck: true
+    },
+    {
       jiraAccountId: '5ee3a361a7a4030ab398ae2d',
       slackHandle: 'garik',
       excludeFromProgressCheck: true,
@@ -71,7 +76,7 @@ const configProd: BotConfig = {
       },
       {
         state: 'In Progress',
-        timeLimit: 4,
+        timeLimit: 3,
         emoji: '⚙️',
         excludeIssueTypes: ['Epic'],
       },
@@ -93,44 +98,24 @@ const configProd: BotConfig = {
         timeLimit: 3,
         emoji: '❓',
         channel: 'C014BMXFTPD',
-        schedule: {
-          days: [1],
-          hourFrom: 8,
-          hourUntil: 12,
-        },
       },
       {
         state: 'Ice Box',
-        timeLimit: 10,
+        timeLimit: 3,
         emoji: '🧊',
         channel: 'C014BMXFTPD',
-        schedule: {
-          days: [2],
-          hourFrom: 8,
-          hourUntil: 12,
-        },
       },
       {
         state: 'New',
-        timeLimit: 10,
+        timeLimit: 3,
         emoji: '✨',
         channel: 'C014BMXFTPD',
-        schedule: {
-          days: [3],
-          hourFrom: 8,
-          hourUntil: 12,
-        },
       },
       {
         state: 'To Do',
-        timeLimit: 10,
+        timeLimit: 3,
         emoji: '📝',
         channel: 'C014BMXFTPD',
-        schedule: {
-          days: [4],
-          hourFrom: 8,
-          hourUntil: 12,
-        },
       },
     ],
   },

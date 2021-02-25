@@ -13,7 +13,7 @@ const userMentionPostFix = (assignee?: string) => {
     return ': [UNASSIGNED]\n'
   }
   const user = getUser(assignee)
-  return user ? `, waiting on <@${user.slackHandle}>\n` : '\n'
+  return user ? `, waiting on <@${user.slackHandle}>\n` : ', no user or user needs to be added to enabler bot please add me 😢\n'
 }
 
 export default userMentionPostFix
