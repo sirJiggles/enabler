@@ -50,7 +50,8 @@ const botLambda = () => {
     handler: 'index.handler',
     runtime: 'nodejs12.x',
     role: role.arn,
-    timeout: 10,
+    // so she does not run multiple times hopefully
+    timeout: 30,
   })
 }
 
