@@ -9,7 +9,7 @@ const configProd: BotConfig = {
     {
       slackHandle: 'nawres',
       jiraAccountId: '5f468511d3796e00466b86c4',
-      excludeFromProgressCheck: true
+      excludeFromProgressCheck: true,
     },
     {
       jiraAccountId: '5ee3a361a7a4030ab398ae2d',
@@ -115,7 +115,6 @@ const configProd: BotConfig = {
         state: 'To Do',
         timeLimit: 3,
         emoji: '📝',
-        channel: 'C014BMXFTPD',
       },
     ],
   },
