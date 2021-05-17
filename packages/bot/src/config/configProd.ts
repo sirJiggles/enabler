@@ -115,6 +115,7 @@ const configProd: BotConfig = {
         state: 'To Do',
         timeLimit: 3,
         emoji: '📝',
+        excludeIssueTypes: ['Subtask', 'Sub-task'],
       },
     ],
   },

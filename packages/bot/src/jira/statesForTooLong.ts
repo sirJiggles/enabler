@@ -7,14 +7,8 @@ import { TooLongStateConfig } from '../config/types'
 import isWithinSchedule from './util/isWithinSchedule'
 
 const stateForTooLong = async (tooLongState: TooLongStateConfig) => {
-  const {
-    state,
-    emoji,
-    timeLimit,
-    excludeIssueTypes,
-    channel,
-    schedule,
-  } = tooLongState
+  const { state, emoji, timeLimit, excludeIssueTypes, channel, schedule } =
+    tooLongState
 
   // if there is a schedule to run this job for, check if we are within
   // it first before doing anything
