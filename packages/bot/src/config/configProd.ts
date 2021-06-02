@@ -7,6 +7,14 @@ import { BotConfig } from './types'
 const configProd: BotConfig = {
   users: [
     {
+      slackHandle: 'vladimir',
+      jiraAccountId: '60b60895367bda00716080f2',
+    },
+    {
+      slackHandle: 'Philipp Jardas',
+      jiraAccountId: '60b608a75fa6f1006f9ba4a9',
+    },
+    {
       slackHandle: 'Rodrigo Muñoz',
       jiraAccountId: '60421b53c668f4006a2a31e4',
       excludeFromProgressCheck: true,
