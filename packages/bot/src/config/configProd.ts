@@ -11,7 +11,7 @@ const configProd: BotConfig = {
       jiraAccountId: '60b60895367bda00716080f2',
     },
     {
-      slackHandle: 'Philipp Jardas',
+      slackHandle: 'phjardas',
       jiraAccountId: '60b608a75fa6f1006f9ba4a9',
     },
     {
