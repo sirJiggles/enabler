@@ -34,6 +34,7 @@ const configProd: BotConfig = {
     {
       slackHandle: 'vladimir',
       jiraAccountId: '60b60895367bda00716080f2',
+      excludeFromProgressCheck: true,
     },
     {
       slackHandle: 'phjardas',
