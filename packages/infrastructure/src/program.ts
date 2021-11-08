@@ -11,7 +11,8 @@ const program = () => {
   const lambda = botLambda()
 
   // now run the lambda on a schedule
-  bridge('enabler-event', lambda.arn, '0 9,14 ? * MON-FRI *')
+  // turn it off for now
+  // bridge('enabler-event', lambda.arn, '0 9,14 ? * MON-FRI *')
 }
 
 export default program
